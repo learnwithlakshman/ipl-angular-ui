@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:"http://localhost:8080/ipl2020/team/"
+  apiUrl:"http://localhost:8080/ipl2020/team/",
+  loginUrl:"https://indipl2020.herokuapp.com/authenticate"
 };
 
 /*
