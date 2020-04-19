@@ -1,3 +1,4 @@
+import { JwtRequest } from '../../shared/models/auth.model';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  requestUser:JwtRequest;
+  errorMessage;
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) { }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -19,15 +22,22 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
   login() {
+    this.requestUser = this.loginForm.value;
     this.authService.login(
-      {
-        username: this.f.username.value,
-        password: this.f.password.value
-      }
-    ).subscribe(success => {
+      this.requestUser
+    ).subscribe(
+      success => {
         if (success) {
+          console.log(success);
           this.router.navigate(['/dashboard']);
+        }else{
+          this.errorMessage = "Invalid credentials";
         }
-      });
+      },
+      error=>{
+        this.errorMessage = "Invalid credentials";
+      }
+       
+    )
   }
 }
