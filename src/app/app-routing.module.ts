@@ -1,8 +1,10 @@
+import { PlayersComponent } from 'src/app/modules/players/players.component';
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DefaultComponent } from './layouts/default/default.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TeamsComponent } from './modules/teams/teams.component';
 
 
 const routes: Routes = [
@@ -15,8 +17,15 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path:'login',
-        component:LoginComponent
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'players',
+        component: PlayersComponent
+      }, {
+        path: 'teams',
+        component: TeamsComponent
       }
     ]
   }
