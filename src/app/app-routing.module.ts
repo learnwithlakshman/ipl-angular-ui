@@ -1,10 +1,10 @@
-import { PlayersComponent } from 'src/app/modules/players/players.component';
+import { TeamsComponent } from './ipl/teams/teams.component';
+import { PlayersComponent } from './ipl/players/players.component';
 import { LoginComponent } from './auth/login/login.component';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { DefaultComponent } from './layouts/default/default.component';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TeamsComponent } from './modules/teams/teams.component';
+import { TournmentComponent } from './ipl/tournment/tournment.component';
 
 
 const routes: Routes = [
@@ -13,8 +13,8 @@ const routes: Routes = [
     component: DefaultComponent,
     children: [
       {
-        path: 'dashboard',
-        component: DashboardComponent
+        path: 'tournmnet',
+        component: TournmentComponent
       },
       {
         path: 'login',
