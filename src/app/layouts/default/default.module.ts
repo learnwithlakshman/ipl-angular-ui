@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DefaultComponent } from './default.component';
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import {ReactiveFormsModule, FormsModule} from '@angular/forms'
 
 
 @NgModule({
@@ -15,7 +15,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DefaultModule { }
