@@ -1,4 +1,12 @@
-<app-header></app-header>
-<app-sidenav></app-sidenav>
-<router-outlet></router-outlet>
+<app-header (toggleSideBarForMe)="sideBarToggler($event)"></app-header>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+
 <app-footer></app-footer>
