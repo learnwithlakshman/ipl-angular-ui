@@ -9,6 +9,11 @@ import { TournmentComponent } from './ipl/tournment/tournment.component';
 
 const routes: Routes = [
   {
+    path: '', pathMatch: 'full',
+    redirectTo: '/login',
+
+  },
+  {
     path: '',
     component: DefaultComponent,
     children: [
