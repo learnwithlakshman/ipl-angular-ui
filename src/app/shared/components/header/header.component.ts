@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { User } from './../../models/auth.model';
+import { AuthService } from './../../auth/auth.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 
@@ -9,10 +12,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
+  user:string;
 
-  constructor() { }
-
-  ngOnInit() { }
+  constructor(private authService:AuthService,private route:Router) { }
+  ngOnInit() { 
+    this.user = this.authService.getloggedUser();
+  }
 
   toggleSideBar() {
     this.toggleSideBarForMe.emit();
@@ -21,5 +26,9 @@ export class HeaderComponent implements OnInit {
         new Event('resize')
       );
     }, 300);
+  }
+  logout(){
+    this.authService.logout();
+    this.route.navigate(["/"]);
   }
 }
