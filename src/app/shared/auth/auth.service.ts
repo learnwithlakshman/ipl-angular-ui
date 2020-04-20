@@ -1,6 +1,7 @@
-import { JwtRequest } from './../shared/models/auth.model';
+import { JwtRequest } from './../models/auth.model';
+
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment'
+import {environment} from '../../../environments/environment'
 import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
@@ -44,7 +45,7 @@ export class AuthService {
     }
     private doLoginUser(user: JwtRequest, tokens: string) {
       this.loggedUser = user.username;
-      this.storeToken(tokens);
+      this.storeToken(tokens["token"]);
     }
   
     private storeToken(token: string) {

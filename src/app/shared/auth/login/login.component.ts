@@ -1,4 +1,5 @@
-import { JwtRequest } from '../../shared/models/auth.model';
+import { JwtRequest } from './../../models/auth.model';
+
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
