@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IplserviceService } from '../iplservice.service';
+import { TeamAmount } from 'src/app/shared/models/iplcommon.model';
 
 @Component({
   selector: 'app-tournment',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TournmentComponent implements OnInit {
 
-  constructor() { }
+  teamAmount: TeamAmount[];
+
+  constructor(private iplserviceService: IplserviceService) { }
+
 
   ngOnInit(): void {
+    this.iplserviceService.amountSpentByAllTeams().subscribe(res => {
+      console.log(res);
+    })
   }
 
 }
