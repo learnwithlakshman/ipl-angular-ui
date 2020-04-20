@@ -1,3 +1,4 @@
+import { LoginComponent } from './shared/auth/login/login.component';
 import { DefaultModule } from './layouts/default/default.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -6,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import { LoginComponent } from './auth/login/login.component'
 import {MaterialModule} from './material/material.module';
 import { TournmentComponent } from './ipl/tournment/tournment.component';
 import { TeamsComponent } from './ipl/teams/teams.component';
@@ -16,10 +16,10 @@ import { PlayersComponent } from './ipl/players/players.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     TournmentComponent,
     TeamsComponent,
     PlayersComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +29,8 @@ import { PlayersComponent } from './ipl/players/players.component';
     FormsModule,
     MaterialModule,
     HttpClientModule,
-    DefaultModule
+    DefaultModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

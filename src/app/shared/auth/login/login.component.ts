@@ -1,4 +1,5 @@
-import { JwtRequest } from '../../shared/models/auth.model';
+import { JwtRequest } from './../../models/auth.model';
+
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
       success => {
         if (success) {
           console.log(success);
-          this.router.navigate(['/tournmnet']);
+          this.router.navigate(['/ipl/tournmnet']);
         }else{
           this.errorMessage = "Invalid credentials";
         }

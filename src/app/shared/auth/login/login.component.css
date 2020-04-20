@@ -1,0 +1,19 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+}
+.mat-card{
+    margin-top: 100px;
+    width: 400px;
+}
+.mat-form-field{
+    display: block;
+}
+
+.login-box{
+    margin: auto;
+    margin-top: 15%;
+    text-align: center;
+}

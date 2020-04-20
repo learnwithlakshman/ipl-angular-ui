@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+      <span> IPL APP </span>
+ </mat-toolbar-row>
+</mat-toolbar>
+<div class="list">
+<mat-card>
+<div class="login-box">Log In</div>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <p>
+    <mat-form-field>
+      <input matInput type="text" id="username" placeholder="Email" autocomplete="off" formControlName="username"
+        required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input matInput type="password" id="password" placeholder="Password" formControlName="password" required>
+    </mat-form-field>
+  </p>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">LOG IN</button>
+      <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+    </div>
+</form>
+</mat-card>
+</div>
