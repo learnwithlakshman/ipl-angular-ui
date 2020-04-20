@@ -14,17 +14,20 @@ const routes: Routes = [
 
   },
   {
-    path: '',
+  
+      path: 'login',
+      component: LoginComponent
+  
+  },
+  {
+    path: 'ipl',
     component: DefaultComponent,
     children: [
       {
         path: 'tournmnet',
         component: TournmentComponent
       },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
+    
       {
         path: 'players',
         component: PlayersComponent

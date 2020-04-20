@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       success => {
         if (success) {
           console.log(success);
-          this.router.navigate(['/tournmnet']);
+          this.router.navigate(['/ipl/tournmnet']);
         }else{
           this.errorMessage = "Invalid credentials";
         }
