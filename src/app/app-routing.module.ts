@@ -1,3 +1,4 @@
+import { AuthGuard } from './shared/auth/auth.guard';
 import { LoginComponent } from './shared/auth/login/login.component';
 import { TeamsComponent } from './ipl/teams/teams.component';
 import { PlayersComponent } from './ipl/players/players.component';
@@ -17,12 +18,12 @@ const routes: Routes = [
   {
   
       path: 'login',
-      component: LoginComponent
-  
+      component: LoginComponent,
   },
   {
     path: 'ipl',
     component: DefaultComponent,
+  
     children: [
       {
         path: 'tournmnet',

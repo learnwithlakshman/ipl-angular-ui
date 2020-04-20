@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { JwtRequest } from './../../models/auth.model';
 
 import { AuthService } from './../auth.service';
@@ -20,8 +21,11 @@ export class LoginComponent implements OnInit {
       username: [''],
       password: ['']
     });
+  
   }
   get f() { return this.loginForm.controls; }
+
+
   login() {
     this.requestUser = this.loginForm.value;
     this.authService.login(
