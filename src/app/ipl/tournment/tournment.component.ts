@@ -34,7 +34,7 @@ export class TournmentComponent implements OnInit {
             this.teamAmount.forEach(ele => {
                 columnChartData.push([ele.teamName, ele.amount]);
             });
-            this.displayColumnChart(columnChartData);
+           // this.displayColumnChart(columnChartData);
         });
 
         this.iplserviceService.allPlayerDetails().subscribe(res => {
@@ -64,7 +64,7 @@ export class TournmentComponent implements OnInit {
 
     }
 
-    displayColumnChart(data: any) {
+    public displayColumnChart(data: any) {
         this.columnChart = {
             chartType: 'ColumnChart',
             dataTable: data,
@@ -73,7 +73,7 @@ export class TournmentComponent implements OnInit {
     }
 
 
-    displayPieChart(data: any) {
+    public displayPieChart(data: any) {
         this.pieChart = {
             chartType: 'PieChart',
             dataTable: data,
