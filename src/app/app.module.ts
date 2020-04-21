@@ -12,6 +12,7 @@ import { TournmentComponent } from './ipl/tournment/tournment.component';
 import { TeamsComponent } from './ipl/teams/teams.component';
 import { PlayersComponent } from './ipl/players/players.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
     HttpClientModule,
     DefaultModule,
     MaterialModule,
-    Ng2GoogleChartsModule
+    Ng2GoogleChartsModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
