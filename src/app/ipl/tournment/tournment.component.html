@@ -1,2 +1,6 @@
-<google-chart [data]="columnChart"></google-chart>
-<google-chart [data]="pieChart"></google-chart>
+<div *ngIf="columnChart">
+    <google-chart [data]="columnChart"></google-chart>
+</div>
+<div *ngIf="pieChart">
+    <google-chart [data]="pieChart"></google-chart>
+</div>
