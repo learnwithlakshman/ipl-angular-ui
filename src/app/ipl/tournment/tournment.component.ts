@@ -25,7 +25,7 @@ export class TournmentComponent implements OnInit {
     ngOnInit(): void {
         this.iplserviceService.amountSpentByAllTeams().subscribe(res => {
             this.teamAmount = res;
-            this.teamAmount = this.teamAmount.sort((team1, team2) => team1.amount - team2.amount);
+            //this.teamAmount = this.teamAmount.sort((team1, team2) => team1.amount - team2.amount);
 
             let columnChartData = [];
 
@@ -64,11 +64,11 @@ export class TournmentComponent implements OnInit {
 
     }
 
-    public displayColumnChart(data) {
+    public displayColumnChart(data: any) {
         this.columnChart = {
             chartType: 'ColumnChart',
             dataTable: data,
-            options: { title: 'Team and Amount' }
+            options: { title: 'All Teams Money Spent', width: 700, height: 450 }
         };
     }
 
@@ -77,7 +77,7 @@ export class TournmentComponent implements OnInit {
         this.pieChart = {
             chartType: 'PieChart',
             dataTable: data,
-            options: { title: 'Player and Count' }
+            options: { title: 'Players Role Count', width: 600, height: 400 }
         };
     }
 

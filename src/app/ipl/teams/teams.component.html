@@ -1,17 +1,46 @@
-<ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#fff"
-  type="ball-scale-multiple"
-><p style="font-size: 20px; color: white">Loading...</p>
-</ngx-spinner>
-
-
 <mat-form-field>
-  <mat-label>Select team</mat-label>
-  <mat-select>
+  <mat-select placeholder="Select Team" [(ngModel)]="selectedLabel" (ngModelChange)="onLabelChange()">
     <mat-option *ngFor="let team of teamLabels" [value]="team">
       {{team}}
     </mat-option>
   </mat-select>
 </mat-form-field>
+
+<div *ngIf="teamPlayers.length>0">
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="teamPlayers">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="label">
+        <th mat-header-cell *matHeaderCellDef> Team </th>
+        <td mat-cell *matCellDef="let element"> {{element.label}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </div>
+
+</div>
+
+<br>
+
+<div *ngIf="pieChart">
+  <google-chart [data]="pieChart" (chartSelect)='showTeamPlayersInfoByRole($event)'></google-chart>
+</div>

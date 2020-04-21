@@ -1,6 +1,11 @@
+import { RoleCount } from './../../shared/models/iplcommon.model';
 import { IplserviceService } from './../iplservice.service';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Player } from 'src/app/shared/models/player.model';
+import { GoogleChartInterface } from 'ng2-google-charts';
+
+
 
 @Component({
   selector: 'app-teams',
@@ -13,22 +18,51 @@ export class TeamsComponent implements OnInit {
 
   teamLabels: string[];
 
+  selectedLabel: string;
+
+  teamPlayers: Player[] = [];
+
+  roleCount: RoleCount[] = [];
+
+  pieChart: GoogleChartInterface;
+
+  displayedColumns: string[] = ['name', 'role', 'label', 'price'];
+
   ngOnInit(): void {
-    this.spinner.show();
-
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 2000);
-
     this.iplService.labelsInfromation().subscribe(res => {
       this.teamLabels = res.labels;
-      console.log(this.teamLabels);
     });
 
   }
 
-  // TODO
-  // Load Team data on select Team
+  onLabelChange() {
+    this.iplService.playerDetailsByTeam(this.selectedLabel).subscribe(res => {
+      this.teamPlayers = res;
+    });
+
+    let pieChartData = [];
+    this.iplService.roleCountByTeam(this.selectedLabel).subscribe(res => {
+      this.roleCount = res;
+      console.log(this.roleCount);
+      pieChartData.push(['Role', 'Count']);
+      this.roleCount.forEach(ele => {
+        pieChartData.push([ele.roleName, ele.count]);
+      });
+      this.showPieChart(pieChartData);
+    });
+
+  }
+
+  showPieChart(data: any) {
+    this.pieChart = {
+      chartType: 'PieChart',
+      dataTable: data,
+      options: { title: `${this.selectedLabel} Role Count `, width: 600, height: 400 }
+    };
+  }
+
+  showTeamPlayersInfoByRole(event) {
+    console.log(event);
+  }
 
 }
