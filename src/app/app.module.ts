@@ -11,6 +11,7 @@ import { MaterialModule } from './material/material.module';
 import { TournmentComponent } from './ipl/tournment/tournment.component';
 import { TeamsComponent } from './ipl/teams/teams.component';
 import { PlayersComponent } from './ipl/players/players.component';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PlayersComponent } from './ipl/players/players.component';
     MaterialModule,
     HttpClientModule,
     DefaultModule,
-    MaterialModule
+    MaterialModule,
+    Ng2GoogleChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
