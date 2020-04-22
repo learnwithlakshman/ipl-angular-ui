@@ -18,6 +18,10 @@ export class TeamsComponent implements OnInit {
 
   teamLabels: string[];
 
+  isLoaded: boolean;
+
+  isPieChartLoaded: boolean;
+
   selectedLabel: string;
 
   teamPlayers: Player[] = [];
@@ -26,7 +30,7 @@ export class TeamsComponent implements OnInit {
 
   roleCount: RoleCount[] = [];
 
-  pieChart: GoogleChartInterface;
+  public pieChart: GoogleChartInterface;
 
   displayedColumns: string[] = ['name', 'role', 'label', 'price'];
 
@@ -39,35 +43,42 @@ export class TeamsComponent implements OnInit {
       this.teamLabels = res.labels;
     });
     this.dataSource.paginator = this.paginator;
-
   }
 
   onLabelChange() {
     this.iplService.playerDetailsByTeam(this.selectedLabel).subscribe(res => {
       this.teamPlayers = res;
       this.dataSource.data = res;
+      if (this.dataSource.data.length > 0) {
+        this.isLoaded = true;
+      }
     });
 
-    let pieChartData = [];
     this.iplService.roleCountByTeam(this.selectedLabel).subscribe(res => {
       this.roleCount = res;
       console.log(this.roleCount);
+      const pieChartData = [];
       pieChartData.push(['Role', 'Count']);
       this.roleCount.forEach(ele => {
         pieChartData.push([ele.roleName, ele.count]);
       });
       this.showPieChart(pieChartData);
+      this.pieChart.component.draw();
     });
+
 
   }
 
   showPieChart(data: any) {
+    console.log(data, this.selectedLabel);
     this.pieChart = {
       chartType: 'PieChart',
       dataTable: data,
       options: { title: `${this.selectedLabel} Role Count `, width: 600, height: 400 }
     };
   }
+
+
 
   showTeamPlayersInfoByRole(event) {
     let role = event.selectedRowValues[0];

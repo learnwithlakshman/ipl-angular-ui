@@ -35,7 +35,7 @@ export class IplserviceService {
     return this.http.get<RoleCount[]>(`${this.apiUrl}role/${teamLabel}`);
   }
   maxAmountPlayerByRole(): Observable<MaxAmountByRolePlayer[]> {
-    return this.http.get<MaxAmountByRolePlayer[]>(`${this.apiUrl}maxamountbyrole`);
+    return this.http.get<MaxAmountByRolePlayer[]>(`${this.apiUrl}maxamoutbyrole`);
   }
 
   allPlayerDetails(): Observable<Player[]> {
