@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { IplserviceService } from './../iplservice.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Player } from 'src/app/shared/models/player.model';
 
 @Component({
   selector: 'app-players',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private iplserviceService: IplserviceService) { }
 
-  ngOnInit(): void {
+  displayedColumns: string[] = ['name', 'role', 'label', 'price'];
+
+  dataSource = new MatTableDataSource<Player>(this.getAllPlayersData());
+
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+  
+  getAllPlayersData(): any {
+    this.iplserviceService.allPlayerDetails().subscribe(res => {
+      this.dataSource.data = res;
+      return res;
+    });
   }
 
 }
+
+

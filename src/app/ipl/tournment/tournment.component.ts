@@ -25,7 +25,7 @@ export class TournmentComponent implements OnInit {
     ngOnInit(): void {
         this.iplserviceService.amountSpentByAllTeams().subscribe(res => {
             this.teamAmount = res;
-            //this.teamAmount = this.teamAmount.sort((team1, team2) => team1.amount - team2.amount);
+            this.teamAmount = this.teamAmount.sort((team1, team2) => team1.amount - team2.amount);
 
             let columnChartData = [];
 
