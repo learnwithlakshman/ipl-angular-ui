@@ -13,6 +13,7 @@ import { TeamsComponent } from './ipl/teams/teams.component';
 import { PlayersComponent } from './ipl/players/players.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     DefaultModule,
     MaterialModule,
     Ng2GoogleChartsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

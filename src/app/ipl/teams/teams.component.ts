@@ -1,11 +1,11 @@
 import { RoleCount } from './../../shared/models/iplcommon.model';
 import { IplserviceService } from './../iplservice.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Player } from 'src/app/shared/models/player.model';
 import { GoogleChartInterface } from 'ng2-google-charts';
-
-
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-teams',
@@ -22,22 +22,30 @@ export class TeamsComponent implements OnInit {
 
   teamPlayers: Player[] = [];
 
+  teamPlayersByRole: Player[] = [];
+
   roleCount: RoleCount[] = [];
 
   pieChart: GoogleChartInterface;
 
   displayedColumns: string[] = ['name', 'role', 'label', 'price'];
 
+  dataSource = new MatTableDataSource<Player>(this.teamPlayers);
+
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
   ngOnInit(): void {
     this.iplService.labelsInfromation().subscribe(res => {
       this.teamLabels = res.labels;
     });
+    this.dataSource.paginator = this.paginator;
 
   }
 
   onLabelChange() {
     this.iplService.playerDetailsByTeam(this.selectedLabel).subscribe(res => {
       this.teamPlayers = res;
+      this.dataSource.data = res;
     });
 
     let pieChartData = [];
@@ -62,7 +70,10 @@ export class TeamsComponent implements OnInit {
   }
 
   showTeamPlayersInfoByRole(event) {
-    console.log(event);
+    let role = event.selectedRowValues[0];
+    this.iplService.playerDetailsByTeamAndRole(this.selectedLabel, role).subscribe(res => {
+      this.teamPlayersByRole = res;
+    });
   }
 
 }

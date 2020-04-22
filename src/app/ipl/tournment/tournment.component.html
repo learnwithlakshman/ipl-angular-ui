@@ -1,6 +1,11 @@
-<div *ngIf="columnChart">
-    <google-chart [data]="columnChart"></google-chart>
-</div>
-<div *ngIf="pieChart">
-    <google-chart [data]="pieChart"></google-chart>
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div class="item item-1" fxFlex="40%">
+        <div *ngIf="columnChart">
+            <google-chart [data]="columnChart"></google-chart>
+        </div>
+    </div>
+    <div class="item item-2" fxFlex="10%" fxFlexOrder="3"><div *ngIf="pieChart">
+        <google-chart [data]="pieChart"></google-chart>
+    </div></div>
+    
 </div>
