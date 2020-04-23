@@ -14,6 +14,7 @@ import { PlayersComponent } from './ipl/players/players.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PlayersTemplateComponent } from './ipl/players-template/players-template.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     TournmentComponent,
     TeamsComponent,
     PlayersComponent,
-    LoginComponent
+    LoginComponent,
+    PlayersTemplateComponent
   ],
   imports: [
     BrowserModule,

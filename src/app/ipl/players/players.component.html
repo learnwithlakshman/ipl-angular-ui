@@ -29,8 +29,11 @@
     </table>
     <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
   </div>
+
 </div>
 
 <div *ngIf="maxPayedPlayers.length>0">
-
+  <div *ngFor="let player of maxPayedPlayers">
+    <app-players-template [players]="player.players"></app-players-template>
+  </div>
 </div>
