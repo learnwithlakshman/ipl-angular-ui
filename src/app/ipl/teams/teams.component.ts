@@ -53,7 +53,7 @@ export class TeamsComponent implements OnInit {
         this.isLoaded = true;
       }
     });
-
+    
     this.iplService.roleCountByTeam(this.selectedLabel).subscribe(res => {
       this.roleCount = res;
       console.log(this.roleCount);
@@ -63,19 +63,21 @@ export class TeamsComponent implements OnInit {
         pieChartData.push([ele.roleName, ele.count]);
       });
       this.showPieChart(pieChartData);
-      this.pieChart.component.draw();
+      this.pieChart = Object.create(this.pieChart);
+      this.pieChart.dataTable = pieChartData;
     });
 
 
   }
 
-  showPieChart(data: any) {
-    console.log(data, this.selectedLabel);
+  showPieChart(mydata: any) {
+    console.log(mydata, this.selectedLabel);
     this.pieChart = {
       chartType: 'PieChart',
-      dataTable: data,
+      dataTable: mydata,
       options: { title: `${this.selectedLabel} Role Count `, width: 600, height: 400 }
     };
+
   }
 
 
