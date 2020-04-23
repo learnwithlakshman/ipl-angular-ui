@@ -24,13 +24,7 @@ export class PlayersComponent implements OnInit {
 
   maxPayedPlayers: MaxAmountByRolePlayer[] = [];
 
-  maxPayedBowler: Player[];
 
-  maxPayedBatsman: Player[];
-
-  maxPayedAllRounder: Player[];
-
-  maxPayedWicketKeeper: Player[];
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -50,19 +44,6 @@ export class PlayersComponent implements OnInit {
   maxAmountByRole() {
     this.iplserviceService.maxAmountPlayerByRole().subscribe(res => {
       this.maxPayedPlayers = res;
-      this.maxPayedPlayers.forEach(ele => {
-        const role = ele.role;
-        const players = ele.players;
-        if (role === 'All-Rounder') {
-          this.maxPayedAllRounder = players;
-        } else if (role === 'Bowler') {
-          this.maxPayedBowler = players;
-        } else if (role === 'Wicket Keeper') {
-          this.maxPayedWicketKeeper = players;
-        } else {
-          this.maxPayedBatsman = players;
-        }
-      });
     });
   }
 
